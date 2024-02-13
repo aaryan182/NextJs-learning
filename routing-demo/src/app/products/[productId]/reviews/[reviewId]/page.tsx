@@ -1,7 +1,16 @@
+import { notFound } from "next/navigation";
+
 export default function ReviewDetail({
-    params,
+  params,
 }: {
-    params: { productId: string; reviewId: string };
+  params: { productId: string; reviewId: string };
 }) {
-    return <h1>Review {params.reviewId} for Product {params.productId}!</h1>;
+  if (parseInt(params.reviewId) > 1000) {
+    notFound();
+  }
+  return (
+    <h1>
+      Review {params.reviewId} for Product {params.productId}!
+    </h1>
+  );
 }
